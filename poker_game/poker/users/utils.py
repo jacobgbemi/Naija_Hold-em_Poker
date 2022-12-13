@@ -19,16 +19,6 @@ def save_picture(form_picture):
 
     return picture_fn
 
-# def cards_picture(card_picture):
-#     picture_path = os.path.join(current_app.root_path, 'static/images/profile_pics', card_picture)
-
-#     output_size = (125, 125)
-#     i = Image.open(card_picture)
-#     i.thumbnail(output_size)
-#     i.save(picture_path)
-
-#     return card_picture
-
 def send_reset_email(user):
     token = user.get_reset_token()
     msg = Message(subject='Password Reset Request',

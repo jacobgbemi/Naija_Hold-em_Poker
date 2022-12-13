@@ -52,4 +52,4 @@ class Game(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f"Game('{self.title}', '{self.date_posted}')"
+        return f"Game('{self.winner}', '{self.date_played}')"

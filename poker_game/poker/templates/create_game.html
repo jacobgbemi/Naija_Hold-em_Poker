@@ -1,9 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
-{% for cards in hands %}
-    {{ cards'}}
-<img src="{{ url_for('static', filename=f'images/cards/ + {card}.png') }}", width='90', height='120' alt="User Image">
-{% endfor %}
+<img src="{{ url_for('static', filename='images/cards/2_of_clubs.png') }}", width='90', height='120' alt="User Image">
+<div>
+    {% for player in players %}
+        <p>{{ player.name }} receives a {{ hand }}</p>
+        <p>{{ player.name }} has a {{ hand_name }} with a {{ hand_cards_string }}</p>
+    {% endfor %}
+</div>
+<p>{{ winner }} has won</p>
 <div class="content-section">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
