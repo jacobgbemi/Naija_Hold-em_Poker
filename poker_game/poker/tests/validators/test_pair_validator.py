@@ -1,7 +1,7 @@
 import unittest
 
-from poker.card import Card
-from poker.validators import PairValidator
+from poker.game.card import Card
+from poker.game.validators import PairValidator
 
 class PairValidatorTest(unittest.TestCase):
     def test_validates_that_cards_have_exactly_one_pair(self):

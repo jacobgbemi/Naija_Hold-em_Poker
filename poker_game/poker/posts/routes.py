@@ -4,7 +4,6 @@ from flask_login import current_user, login_required
 from poker import db
 from poker.models import Post
 from poker.posts.forms import PostForm
-# from poker.main import show_hand, show_winner, show_rank
 
 
 posts = Blueprint('posts', __name__)

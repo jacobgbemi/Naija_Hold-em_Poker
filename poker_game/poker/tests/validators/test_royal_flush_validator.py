@@ -1,7 +1,7 @@
 import unittest
 
-from poker.card import Card
-from poker.validators import RoyalFlushValidator
+from poker.game.card import Card
+from poker.game.validators import RoyalFlushValidator
 
 class RoyalFlushValidatorTest(unittest.TestCase):
     def test_validates_that_cards_do_not_have_straight_flush_ending_in_ace(self):

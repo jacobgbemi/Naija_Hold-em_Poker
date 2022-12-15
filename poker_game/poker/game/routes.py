@@ -21,7 +21,7 @@ def show_cards():
 
     hand1 = Hand()
     hand2 = Hand()
-    # user = User.query.filter(username).first()
+    
     player1 = Player(name = "Bot", hand = hand1)
     player2 = Player(name = current_user.username, hand = hand2)
     players = [player1, player2]
@@ -30,15 +30,21 @@ def show_cards():
     game_round.play()
 
     for player in players:
-        print(f"{player.name} receives a {player.hand}.")
+        # print(f"{player.name} receives a {player.hand}.")
         index, hand_name, hand_cards = player.best_hand()
         hand_cards_strings = [str(card) for card in hand_cards]
         hand_cards_string = " and ".join(hand_cards_strings)
         print(f"{player.name} has a {hand_name} with a {hand_cards_string}.")
 
+    # for player in players:
+    #     player = player.name
+    #     for hand in player.hand:
+    #         hand = hand + '.png'
+    # player_hand = hand.name
+
     winning_player = max(players)
     winner = winning_player.name
-    
+   
 
     form = GameForm()
     if form.validate_on_submit():
@@ -48,3 +54,29 @@ def show_cards():
         flash(f'{winner} has won', 'success')
     return render_template("create_game.html", winner=winner, player=player.name, hand_name=hand_name, hand_cards_string=hand_cards_string,
                             players=players, hand=player.hand, form=form, title="New Poker Game", legend='New Poker Game')
+
+# @games.route("/game/<int:game_id>")
+# @login_required
+# def game(game_id):
+#     game = Game.query.get_or_404(game_id)
+#     return render_template('game.html', title=game.winner, game=game)
+
+
+# {% for image in images %}
+#     <img src="{{ image }}" alt="">
+# {% endfor %}
+
+
+# # Assuming you have a list of variables
+# variables = ['var1', 'var2', 'var3']
+
+# # Loop through the list
+# for var in variables:
+#     # Convert the variable name to an image filename
+#     image_filename = var + '.jpg'
+#     print(image_filename)
+
+# # Output:
+# # var1.jpg
+# # var2.jpg
+# # var3.jpg

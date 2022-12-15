@@ -1,7 +1,7 @@
 import unittest
 
-from poker.card import Card
-from poker.validators import NoCardsValidator
+from poker.game.card import Card
+from poker.game.validators import NoCardsValidator
 
 class NoCardsValidatorTest(unittest.TestCase):
     def test_validates_that_no_cards_are_present(self):

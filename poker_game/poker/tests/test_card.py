@@ -1,5 +1,5 @@
 import unittest
-from poker.card import Card
+from poker.game.card import Card
 
 class CardTest(unittest.TestCase):
     def test_has_rank(self):
@@ -16,7 +16,7 @@ class CardTest(unittest.TestCase):
 
     def test_has_string_representation_with_rank_and_suit(self):
         card = Card("5", "Diamonds")
-        self.assertEqual(str(card), "5 of Diamonds")
+        self.assertEqual(str(card), "5_of_Diamonds")
 
     def test_has_technical_representation(self):
         card = Card("5", "Diamonds")

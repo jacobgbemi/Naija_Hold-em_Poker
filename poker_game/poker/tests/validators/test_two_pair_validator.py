@@ -1,7 +1,7 @@
 import unittest
 
-from poker.card import Card
-from poker.validators import TwoPairValidator
+from poker.game.card import Card
+from poker.game.validators import TwoPairValidator
 
 class TwoPairValidatorTest(unittest.TestCase):
     def setUp(self):

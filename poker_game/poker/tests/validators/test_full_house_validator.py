@@ -1,7 +1,7 @@
 import unittest
 
-from poker.card import Card
-from poker.validators import FullHouseValidator
+from poker.game.card import Card
+from poker.game.validators import FullHouseValidator
 
 class FullHouseValidatorTest(unittest.TestCase):
     def setUp(self):

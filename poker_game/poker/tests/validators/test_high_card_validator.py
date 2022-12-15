@@ -1,7 +1,7 @@
 import unittest
 
-from poker.card import Card
-from poker.validators import HighCardValidator
+from poker.game.card import Card
+from poker.game.validators import HighCardValidator
 
 class HighCardValidatorTest(unittest.TestCase):
     def test_validates_that_cards_have_a_high_card(self):

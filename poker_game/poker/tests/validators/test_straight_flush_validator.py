@@ -1,7 +1,7 @@
 import unittest
 
-from poker.card import Card
-from poker.validators import StraightFlushValidator
+from poker.game.card import Card
+from poker.game.validators import StraightFlushValidator
 
 class StraightFlushValidatorTest(unittest.TestCase):
     def test_determines_that_there_are_not_five_consecutive_cards_with_same_suit(self):

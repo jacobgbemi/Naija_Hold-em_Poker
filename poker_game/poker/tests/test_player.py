@@ -1,9 +1,9 @@
 import unittest
 from unittest.mock import MagicMock
 
-from poker.card import Card
-from poker.hand import Hand
-from poker.player import Player
+from poker.game.card import Card
+from poker.game.hand import Hand
+from poker.game.player import Player
 
 class PlayerTest(unittest.TestCase):
     def test_stores_name_and_hand(self):

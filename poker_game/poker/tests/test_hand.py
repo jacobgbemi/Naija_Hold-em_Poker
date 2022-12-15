@@ -1,7 +1,7 @@
 import unittest
-from poker.card import Card
-from poker.hand import Hand
-from poker.validators import PairValidator
+from poker.game.card import Card
+from poker.game.hand import Hand
+from poker.game.validators import PairValidator
 
 class HandTest(unittest.TestCase):
     def test_starts_out_with_no_cards(self):
@@ -18,8 +18,8 @@ class HandTest(unittest.TestCase):
         hand.add_cards(cards)
 
         self.assertEqual(
-            repr(hand),
-            "7 of Clubs, Ace of Diamonds"
+            repr(hand), 
+            "7_of_Clubs Ace_of_Diamonds"
         )
 
     def test_receives_and_stores_cards(self):

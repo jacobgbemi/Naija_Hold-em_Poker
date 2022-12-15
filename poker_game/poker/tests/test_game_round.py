@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import MagicMock, call
 
-from poker.card import Card
-from poker.game_round import GameRound
+from poker.game.card import Card
+from poker.game.game_round import GameRound
 
 class GameRoundTest(unittest.TestCase):
     def setUp(self):

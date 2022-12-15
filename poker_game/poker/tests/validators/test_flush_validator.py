@@ -1,7 +1,7 @@
 import unittest
 
-from poker.card import Card
-from poker.validators import FlushValidator
+from poker.game.card import Card
+from poker.game.validators import FlushValidator
 
 class FlushValidatorTest(unittest.TestCase):
     def setUp(self):

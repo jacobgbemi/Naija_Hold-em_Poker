@@ -1,7 +1,7 @@
 import unittest
 
-from poker.card import Card
-from poker.validators import StraightValidator
+from poker.game.card import Card
+from poker.game.validators import StraightValidator
 
 class StraightValidatorTest(unittest.TestCase):
     def setUp(self):

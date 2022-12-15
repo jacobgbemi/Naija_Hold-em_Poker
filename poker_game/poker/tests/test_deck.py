@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import patch
 
-from poker.card import Card
-from poker.deck import Deck
+from poker.game.card import Card
+from poker.game.deck import Deck
 
 class DeckTest(unittest.TestCase):
     def test_has_length_that_is_equal_to_count_of_cards(self):
