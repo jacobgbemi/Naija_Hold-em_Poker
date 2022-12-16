@@ -26,7 +26,7 @@ class Card():
         self.suit = suit
 
     def __str__(self):
-        return f"{self.rank}_of_{self.suit}"
+        return f"{self.rank}_of_{self.suit}.png"
 
     def __repr__(self):
         return f"Card('{self.rank}', '{self.suit}')"

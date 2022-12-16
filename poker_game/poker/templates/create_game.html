@@ -1,31 +1,24 @@
 {% extends "layout.html" %}
+from jinja2 import str
 {% block content %}
-<img src="{{ url_for('static', filename='images/cards/2_of_clubs.png') }}", width='90', height='120' alt="User Image">
+<!-- <img src="{{ url_for('static', filename='images/cards/2_of_clubs.png') }}", width='90', height='120' alt="User Image"> -->
 <div>
     {% for player in players %}
-        <p>{{ player }} receives a {{ hand }}</p>
-        {% for hand in player.hand %}
-            {{ hand = hand + '.png' }}
-            {{ <img src="url_for('static', filename='images/cards/hand')"/> }}
-        <!-- <div>{{ player.name }} receives a <img src="{{ url_for('static', filename='images/cards/3_of_clubs.png') }}", width='90', height='120'/></div> -->
-        <!-- <img src="url_for('static', filename='images/cards/ + {{player.hand}}.png')"/> -->
+        <p></p>
+        <div>{{ player.name }} receives a </div>
+        {% for card  in hand_list  %}
+            <img src="{{ url_for('static', filename='images/cards/' + card) }}", width='90', height='120' alt="Card Image" />
         {% endfor %}
-        <p>{{ player.name }} has a {{ hand_name }} with a {{ hand_cards_string }}</p>
+        <p></p>
+        {% set index, hand_name, hand_cards  = player.best_hand() %}
+        <div>{{ player.name }} has a {{ hand_name }} with a </div>
+        <!-- {{  hand_cards_string }} -->
+        {% for cards  in hand_cards_str  %}
+            <img src="{{ url_for('static', filename='images/cards/' + cards) }}", width='90', height='120' alt="Card Image" />
+        {% endfor %}
     {% endfor %}
 </div>
+<br/>
 <p>{{ winner }} has won</p>
-<div class="content-section">
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-            {{ form.play(class="btn btn-outline-info") }}
-        </div>
-        <div class="form-group">
-            {{ form.play_again(class="btn btn-outline-info") }}
-        </div>
-        <div class="form-group">
-            {{ form.quit(class="btn btn-outline-info") }}
-        </div>
-    </form>
-</div>
+
 {% endblock content %}

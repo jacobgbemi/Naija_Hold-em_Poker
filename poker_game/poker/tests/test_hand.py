@@ -19,7 +19,7 @@ class HandTest(unittest.TestCase):
 
         self.assertEqual(
             repr(hand), 
-            "7_of_Clubs Ace_of_Diamonds"
+            '7_of_Clubs.png, Ace_of_Diamonds.png'
         )
 
     def test_receives_and_stores_cards(self):

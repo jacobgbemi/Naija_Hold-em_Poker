@@ -16,7 +16,7 @@ class CardTest(unittest.TestCase):
 
     def test_has_string_representation_with_rank_and_suit(self):
         card = Card("5", "Diamonds")
-        self.assertEqual(str(card), "5_of_Diamonds")
+        self.assertEqual(str(card), "5_of_Diamonds.png")
 
     def test_has_technical_representation(self):
         card = Card("5", "Diamonds")

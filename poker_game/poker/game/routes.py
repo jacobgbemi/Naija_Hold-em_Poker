@@ -7,7 +7,7 @@ from poker.game.player import Player
 from flask_login import current_user, login_required
 from poker import db
 from poker.game.forms import GameForm
-from flask import render_template, Blueprint, flash
+from flask import render_template, Blueprint, flash, url_for
 from poker.models import Game
 
 games = Blueprint('games', __name__)
@@ -21,62 +21,30 @@ def show_cards():
 
     hand1 = Hand()
     hand2 = Hand()
-    
+
     player1 = Player(name = "Bot", hand = hand1)
     player2 = Player(name = current_user.username, hand = hand2)
     players = [player1, player2]
 
     game_round = GameRound(deck = deck, players = players)
     game_round.play()
-
+    
+    
     for player in players:
-        # print(f"{player.name} receives a {player.hand}.")
+        hand_list = str(player.hand).split(",")
         index, hand_name, hand_cards = player.best_hand()
         hand_cards_strings = [str(card) for card in hand_cards]
         hand_cards_string = " and ".join(hand_cards_strings)
-        print(f"{player.name} has a {hand_name} with a {hand_cards_string}.")
-
-    # for player in players:
-    #     player = player.name
-    #     for hand in player.hand:
-    #         hand = hand + '.png'
-    # player_hand = hand.name
+        hand_cards_str = str(hand_cards_string).split("and")
 
     winning_player = max(players)
     winner = winning_player.name
-   
 
-    form = GameForm()
-    if form.validate_on_submit():
-        game = Game(winner=winning_player.name, author=current_user)
-        db.session.add(game)
-        db.session.commit()
-        flash(f'{winner} has won', 'success')
-    return render_template("create_game.html", winner=winner, player=player.name, hand_name=hand_name, hand_cards_string=hand_cards_string,
-                            players=players, hand=player.hand, form=form, title="New Poker Game", legend='New Poker Game')
-
-# @games.route("/game/<int:game_id>")
-# @login_required
-# def game(game_id):
-#     game = Game.query.get_or_404(game_id)
-#     return render_template('game.html', title=game.winner, game=game)
-
-
-# {% for image in images %}
-#     <img src="{{ image }}" alt="">
-# {% endfor %}
-
-
-# # Assuming you have a list of variables
-# variables = ['var1', 'var2', 'var3']
-
-# # Loop through the list
-# for var in variables:
-#     # Convert the variable name to an image filename
-#     image_filename = var + '.jpg'
-#     print(image_filename)
-
-# # Output:
-# # var1.jpg
-# # var2.jpg
-# # var3.jpg
+    # form = GameForm()
+    # if form.validate_on_submit():
+    #     game = Game(winner=winning_player.name, author=current_user)
+    #     db.session.add(game)
+    #     db.session.commit()
+    #     flash(f'{winner} has won', 'success')
+    return render_template("create_game.html", players=players, hand_name=hand_name, hand_cards=hand_cards,
+                            winner=winner, hand_list=hand_list, hand_cards_str=hand_cards_str, hand_cards_string= hand_cards_string)
