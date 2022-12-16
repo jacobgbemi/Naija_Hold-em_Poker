@@ -5,8 +5,8 @@
     {% for player in players %}
         <p>{{ player }} receives a {{ hand }}</p>
         {% for hand in player.hand %}
-            {{ hand = hand + '.png' }}
-            {{ <img src="url_for('static', filename='images/cards/hand')"/> }}
+            {% set hand = hand + '.png' %}
+                {{ <img src="url_for('static', filename='images/cards/hand')"/> }}
         <!-- <div>{{ player.name }} receives a <img src="{{ url_for('static', filename='images/cards/3_of_clubs.png') }}", width='90', height='120'/></div> -->
         <!-- <img src="url_for('static', filename='images/cards/ + {{player.hand}}.png')"/> -->
         {% endfor %}
