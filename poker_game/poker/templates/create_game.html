@@ -1,24 +1,30 @@
 {% extends "layout.html" %}
-from jinja2 import str
 {% block content %}
-<!-- <img src="{{ url_for('static', filename='images/cards/2_of_clubs.png') }}", width='90', height='120' alt="User Image"> -->
+<p>{{ winner }} has won</p>
+<div>
+    <a class="nav-item nav-link" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play Again</a>
+</div>
+
+<div>
+    <a class="nav-item nav-link" href="{{ url_for('games.quit') }}">Quit</a>
+</div>
 <div>
     {% for player in players %}
         <p></p>
         <div>{{ player.name }} receives a </div>
-        {% for card  in hand_list  %}
-            <img src="{{ url_for('static', filename='images/cards/' + card) }}", width='90', height='120' alt="Card Image" />
+        {% for card_image  in hand_list  %}
+        <!-- {{ card_image }} -->
+            <img src="{{ url_for('static', filename='images/cards/' + card_image ) }}", width='90', height='120' alt="User Image">
         {% endfor %}
         <p></p>
         {% set index, hand_name, hand_cards  = player.best_hand() %}
         <div>{{ player.name }} has a {{ hand_name }} with a </div>
         <!-- {{  hand_cards_string }} -->
-        {% for cards  in hand_cards_str  %}
-            <img src="{{ url_for('static', filename='images/cards/' + cards) }}", width='90', height='120' alt="Card Image" />
+        {% for hand_image  in hand_cards_list  %}
+            <!-- {{ hand_image }} -->
+            <img src="{{ url_for('static', filename='images/cards/' + hand_image ) }}", width='90', height='120' alt="User Image">
         {% endfor %}
     {% endfor %}
 </div>
-<br/>
-<p>{{ winner }} has won</p>
 
 {% endblock content %}
