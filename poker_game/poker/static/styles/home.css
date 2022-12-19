@@ -1,0 +1,16 @@
+.custom_margin {
+    margin-top: 5rem;
+}
+
+.custom_link:link, .custom_link:visited {
+    background-color: #07b641;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .custom_link:hover, .custom_link:active {
+    background-color: rgb(6, 160, 221);
+    color: white;
+  }
