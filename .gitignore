@@ -1,1 +1,8 @@
-*__pycache__
+__pycache__
+poker_game/poker/__pycache__
+poker_game/poker/game/__pycache__
+poker_game/poker/main/__pycache__
+poker_game/poker/posts/__pycache__
+poker_game/poker/tests/__pycache__
+poker_game/poker/tests/validators/__pycache__
+poker_game/poker/users/__pycache__
