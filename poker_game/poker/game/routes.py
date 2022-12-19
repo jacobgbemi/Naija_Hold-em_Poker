@@ -6,9 +6,9 @@ from poker.game.player import Player
 
 from flask_login import current_user, login_required
 from poker import db
-# from poker.game.forms import GameForm
 from flask import render_template, Blueprint, flash, url_for, redirect
 from poker.models import Game
+import json
 
 games = Blueprint('games', __name__)
 
@@ -22,11 +22,6 @@ def start_game():
     card_string = "and".join(card)
     cards_list = str(card_string).split("and")
     cards_list_a, cards_list_b = split_list(cards_list)
-
-    # game = Game(winner=winning_player.name, author=current_user)
-    # db.session.add(game)
-    # db.session.commit()
-    # flash(f'{winner} has won', 'success')
     return render_template("start_game.html", cards_list_b=cards_list_b)
 
 @games.route("/game/<string:username>", methods=['GET', 'POST'])
@@ -47,23 +42,25 @@ def show_cards(username):
     game_round.play()
     
     for player in players:
-        hand_list = str(player.hand).split(", ")
+        player_hand = player.hand
+    hand_list = str(player_hand).split(", ")
+    # hand_list = json.dumps(hand_list)
 
     index, hand_name, hand_cards = player.best_hand()
     hand_cards_strings = [str(card) for card in hand_cards]
     hand_cards_string = "and".join(hand_cards_strings)
     hand_cards_list = str(hand_cards_string).split("and")
+    # hand_cards_list = json.dumps(hand_cards_list)
 
-    # for cardl_image in cards_list:
-    #     card_images = url_for('static', filename='images/cards/' + cardl_image)
+
+    # for cardl_image in hand_list:
+    #     cardl_image = url_for('static', filename='images/cards/' + cardl_image)
     
-    # for hand_image in hand_cards_list:
-    #         hand_images = url_for('static', filename='images/cards/' + hand_image)
+    # for handl_image in hand_cards_list:
+    #         handl_image = url_for('static', filename='images/cards/' + handl_image)
 
     winning_player = max(players)
     winner = winning_player.name
-
-    
     return render_template("create_game.html", players=players, hand_name=hand_name, hand_cards=hand_cards,
                             winner=winner, hand_list=hand_list, hand_cards_list=hand_cards_list,
                             hand_cards_string= hand_cards_string)
