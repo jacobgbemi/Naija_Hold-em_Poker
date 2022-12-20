@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-div <div class="custom_margin">
+<div class="">
     {% if winner == "Bot" %}
         <p class="alert alert-info alert-dismissable close" data-dismiss="alert">Bot won</p>
     {% else %}
@@ -18,15 +18,20 @@ div <div class="custom_margin">
     <div>
         {% for player in players %}
             <p class="btn btn-info btn-sm">{{ player.name }} receives these cards <p>
-            {% for cardl_image in hand_list  %}
-                {{ cardl_image }}
-                <!-- <img src="{{ url_for('static', filename='images/cards/' + cardl_image ) }}", width='60', height='100' alt="User Image"> -->
-            {% endfor %}
+            {% set player_hand = [player.hand|string] %}
+            <!-- {{player_hand}} -->
+            {% set card_map = player_hand|map('list')|join(', ') %}  
+                {{card_map}}
+                <!-- {% for cardl_image in card_map %} -->
+                    <!-- {{ cardl_image }} -->
+                <!-- <img src="{{ url_for('static', filename='images/cards/' + cardl_image) }}", width='50', height='80' alt="{{ cardl_image }}" -->
+                <!-- {% endfor %} -->
             {% set index, hand_name, hand_cards  = player.best_hand() %}
-            <p class="btn btn-info btn-sm">{{ player.name }} has a <span class="btn btn-primary btn-sm">{{ hand_name }}</span> with these cards </p>
-            {% for handl_image in hand_cards_list  %}
-                {{ handl_image }}
-                <!-- <img src="{{ url_for('static', filename='images/cards/' + handl_image ) }}", width='60', height='100' alt="User Image"> -->
+            <p class="btn btn-info btn-sm">{{ player.name }} has a <span class="btn btn-primary btn-sm">{{ hand_name }} </span>with these cards </p>
+            {% for card in hand_cards %}
+                {% set card_image = card.rank ~ '_of_' ~ card.suit ~ '.png' %}
+                {{ card_image }}
+                <!-- <img src="{{ url_for('static', filename='images/cards/' + card_image) }}", width='50', height='80' alt="{{ card_image }}"/>                         -->
             {% endfor %}
         {% endfor %}
     </div>

@@ -1,17 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="custom_margin">
+<div class="">
     <div>
         <p><a class="nav-item nav-link btn btn-success btn-sm btn-block" type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play</a></p>
     </div>
 
     <div class="centralize">
         {% for cardl_image  in cards_list_b  %}
-            <!-- <img src="{{ url_for('static', filename='images/cards/Jack_of_CLubs.png')  }}", width='50', height='80' alt="{{ card_image }}" /> -->
-            <!-- <img src="{{ url_for('static', filename='images/cards/Queen_of_Spades.png' )  }}", width='50', height='80' alt="{{ card_image }}" /> -->
+            <img src="{{ url_for('static', filename='images/cards/Jack_of_CLubs.png')  }}", width='50', height='80' alt="{{ card_image }}" />
+            <img src="{{ url_for('static', filename='images/cards/4_of_Spades.png' )  }}", width='50', height='80' alt="{{ card_image }}" />
             <img src="{{ url_for('static', filename='images/cards/King_of_Hearts.png')  }}", width='50', height='80' alt="{{ card_image }}" />
             <img src="{{ url_for('static', filename='images/cards/Ace_of_Diamonds.png')  }}", width='50', height='80' alt="{{ card_image }}" />
             {% endfor %}
+    </div>
+    <div>
+        <p><a class="nav-item nav-link btn btn-success btn-sm btn-block" type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play</a></p>
     </div>
 </div>
 

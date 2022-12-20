@@ -1,5 +1,5 @@
-.custom_margin {
-    margin-top: 5rem;
+.custom_margin, body {
+    margin-top: 4rem;
 }
 
 .custom_link:link, .custom_link:visited {
