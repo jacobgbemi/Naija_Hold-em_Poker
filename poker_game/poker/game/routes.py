@@ -42,7 +42,7 @@ def show_cards(username):
     game_round.play()
     
     # for player in players:
-    #     hand_list = str(player.hand).split(", ")
+    #     hand_list = list(str(player.hand).split(", "))
         
         
         # index, hand_name, hand_cards = player.best_hand()
