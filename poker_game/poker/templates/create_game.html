@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="">
-    {% if winner == "Bot" %}
+    {% set winner = players|max %}
+    {% if winner.name == "Bot" %}
         <p class="alert alert-info alert-dismissable close" data-dismiss="alert">Bot won</p>
     {% else %}
         <p class="alert alert-info alert-dismissable close" data-dismiss="alert">You won</p>
@@ -15,26 +16,24 @@
             <a class="nav-item nav-link btn btn-warning btn-sm" type="button" href="{{ url_for('games.quit') }}">Quit</a>
         </p>
     </div>
-    <div>
+    <div>        
         {% for player in players %}
-            <p class="btn btn-info btn-sm">{{ player.name }} receives these cards <p>
-            {% set player_hand = [player.hand|string] %}
-            <!-- {{player_hand}} -->
-            {% set card_map = player_hand|map('list')|join(', ') %}  
-                {{card_map}}
-                <!-- {% for cardl_image in card_map %} -->
-                    <!-- {{ cardl_image }} -->
-                <!-- <img src="{{ url_for('static', filename='images/cards/' + cardl_image) }}", width='50', height='80' alt="{{ cardl_image }}" -->
-                <!-- {% endfor %} -->
+            <p class="btn btn-info btn-sm">{{ player.name }} receives these cards </p>
+            {% set player_hand = player.hand|hand_list %}
+            {% for cardl_image in player_hand %}
+                <!-- <p>{{ cardl_image }}</p> -->
+            <img src="{{ url_for('static', filename='images/cards/' + cardl_image) }}", width='50', height='80' alt="{{ cardl_image }}"/>
+            {% endfor %}
+            <p></p>
             {% set index, hand_name, hand_cards  = player.best_hand() %}
             <p class="btn btn-info btn-sm">{{ player.name }} has a <span class="btn btn-primary btn-sm">{{ hand_name }} </span>with these cards </p>
-            {% for card in hand_cards %}
-                {% set card_image = card.rank ~ '_of_' ~ card.suit ~ '.png' %}
-                {{ card_image }}
-                <!-- <img src="{{ url_for('static', filename='images/cards/' + card_image) }}", width='50', height='80' alt="{{ card_image }}"/>                         -->
+            {% for card in hand_cards|best_hand_cards %}
+                <!-- {% set card_image = card.rank ~ '_of_' ~ card.suit ~ '.png' %} -->
+                <img src="{{ url_for('static', filename='images/cards/' + card) }}", width='50', height='80' alt="{{ card_image }}"/>                        
             {% endfor %}
         {% endfor %}
+       
     </div>
 </div>
-
+<script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
 {% endblock content %}

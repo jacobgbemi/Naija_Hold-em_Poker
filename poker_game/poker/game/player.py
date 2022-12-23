@@ -6,7 +6,14 @@ class Player():
     def __gt__(self, other):
         current_player_best_validator_index = self.best_hand()[0]  # 0
         other_player_best_validator_index = other.best_hand()[0]   # 2
-        return current_player_best_validator_index < other_player_best_validator_index
+        current_player_best_validator_rank = self.best_hand()[1]  # 0
+        other_player_best_validator_rank = other.best_hand()[1]   # 2
+
+        if current_player_best_validator_index == other_player_best_validator_index:
+            return current_player_best_validator_index
+
+        if current_player_best_validator_index < other_player_best_validator_index:
+            return current_player_best_validator_index
 
     def best_hand(self):
         return self.hand.best_rank()

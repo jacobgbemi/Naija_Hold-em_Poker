@@ -31,8 +31,12 @@ class Hand():
         self.cards = []
 
     def __repr__(self):
-        cards_as_strings = [(str(card)) for card in self.cards]
-        return ", ".join(cards_as_strings)
+        card = [str(card) for card in self.cards]
+        return ", ".join(card)
+        
+
+    # def hand_list(self):
+    #     hand_list = str(player.hand).split(", ")
 
     def add_cards(self, cards):
         copy = self.cards[:]
