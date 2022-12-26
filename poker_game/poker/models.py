@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
+    pokers = db.relationship('Game', backref='author', lazy=True)
 
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -40,6 +41,7 @@ class Post(db.Model):
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
+    # post_id = db.Column(db.Integer, db.ForeignKey('post.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
@@ -47,10 +49,12 @@ class Post(db.Model):
 
 class Game(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    player = db.Column(db.String(20), unique=True, nullable=False)
+    # username = db.Column(db.String(20), unique=True, nullable=False)
+    status = db.Column(db.String(20), nullable=True)
+    hand_name = db.Column(db.String(30), nullable=True)
     date_played = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    # game_id = db.Column(db.Integer, db.ForeignKey('game.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     
-
     def __repr__(self):
-        return f"Game('{self.winner}', '{self.date_played}')"
+        return f"Game('{self.hand_name}', '{self.status}', '{self.date_played}')"

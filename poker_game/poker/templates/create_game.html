@@ -1,39 +1,99 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="">
     {% set winner = players|max %}
     {% if winner.name == "Bot" %}
+        {% set status = "Lost" %}
         <p class="alert alert-info alert-dismissable close" data-dismiss="alert">Bot won</p>
     {% else %}
+        {% set status = "Won" %}
         <p class="alert alert-info alert-dismissable close" data-dismiss="alert">You won</p>
     {% endif %}
-    <div class="row">
-        <p class="col-sm-6">
-            <a class="nav-item nav-link btn btn-success btn-sm " type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play Again</a>
-        </p>
+<div class="row">
+    <p class="col-sm-6">
+        <a class="nav-item nav-link btn btn-success btn-sm " type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play Again</a>
+    </p>
 
-        <p class="col-sm-6">
-            <a class="nav-item nav-link btn btn-warning btn-sm" type="button" href="{{ url_for('games.quit') }}">Quit</a>
-        </p>
-    </div>
-    <div>        
-        {% for player in players %}
-            <p class="btn btn-info btn-sm">{{ player.name }} receives these cards </p>
-            {% set player_hand = player.hand|hand_list %}
-            {% for cardl_image in player_hand %}
-                <!-- <p>{{ cardl_image }}</p> -->
-            <img src="{{ url_for('static', filename='images/cards/' + cardl_image) }}", width='50', height='80' alt="{{ cardl_image }}"/>
-            {% endfor %}
-            <p></p>
-            {% set index, hand_name, hand_cards  = player.best_hand() %}
-            <p class="btn btn-info btn-sm">{{ player.name }} has a <span class="btn btn-primary btn-sm">{{ hand_name }} </span>with these cards </p>
-            {% for card in hand_cards|best_hand_cards %}
-                <!-- {% set card_image = card.rank ~ '_of_' ~ card.suit ~ '.png' %} -->
-                <img src="{{ url_for('static', filename='images/cards/' + card) }}", width='50', height='80' alt="{{ card_image }}"/>                        
-            {% endfor %}
-        {% endfor %}
-       
-    </div>
+    <p class="col-sm-6">
+        <a class="nav-item nav-link btn btn-warning btn-sm" type="button" href="{{ url_for('games.quit') }}">Quit</a>
+    </p>
 </div>
-<script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+<div class="container">          
+    <table class="table">
+        {% for player in players %}
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>Cards Received</th>
+                    <th>Best Hand</th>
+                    <th>Hand Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                
+                <td class="btn btn-info btn-sm">
+                    {{ player.name }}
+                </td>
+                <td>
+                    {% set player_hand = player.hand|hand_list %}
+                    {% for cardl_image in player_hand %}
+                    <!-- <p>{{ cardl_image }}</p> -->
+                    <img src="{{ url_for('static', filename='images/cards/' + cardl_image) }}", width='50', height='80' alt="{{ cardl_image }}"/>
+                    {% endfor %}
+                </td>
+                {% set index, hand_name, hand_cards  = player.best_hand() %}
+                <td>
+                    {% for card in hand_cards|best_hand_cards %}
+                        <!-- {% set card_image = card.rank ~ '_of_' ~ card.suit ~ '.png' %} -->
+                        <img src="{{ url_for('static', filename='images/cards/' + card) }}", width='50', height='80' alt="{{ card_image }}"/>                        
+                    {% endfor %}
+                </td>
+                <td>
+                    <span class="btn btn-primary btn-sm">{{ hand_name }} </span>
+                </td>
+               
+            </tr>
+        </tbody>
+    
+        {% endfor %}
+    </table>
+</div>
+
+
+<!-- <script src="{{ url_for('static', filename='scripts/index.js') }}"></script> -->
+<!-- <div class="content-section ">
+{% raw %}
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="form-group"  >
+                {{ form.hand_name.label(class="form-control-label" type="hidden" name="secret_value") }}
+                {% if form.hand_name.errors %}
+                    {{ form.hand_name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.title.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.hand_name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group" type="hidden" name="secret_value" >
+                {{ form.status.label(class="form-control-label") }}
+                {% if form.status.errors %}
+                    {{ form.status(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.status.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.status(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+    </form>
+{% endraw %}
+</div> -->
 {% endblock content %}

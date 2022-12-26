@@ -1,10 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="">
     <div>
         <p><a class="nav-item nav-link btn btn-success btn-sm btn-block" type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play</a></p>
     </div>
-
+   
     <div class="centralize">
         {% for cardl_image  in cards_list_b  %}
             <img src="{{ url_for('static', filename='images/cards/4_of_Spades.png' )  }}", width='25', height='40' alt="{{ card_image }}" />
@@ -22,6 +21,6 @@
     <div>
         <p><a class="nav-item nav-link btn btn-success btn-sm btn-block" type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play</a></p>
     </div>
-</div>
+
 
 {% endblock content %}

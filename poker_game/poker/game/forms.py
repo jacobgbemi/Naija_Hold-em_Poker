@@ -1,10 +1,17 @@
 from flask_wtf import FlaskForm
-from flask_table import Table, Col
-from wtforms import SubmitField, TextAreaField
-from wtforms.validators import DataRequired
+from wtforms import StringField, SubmitField, TextAreaField
+# from wtforms.validators import DataRequired
 
 
-class Game(FlaskForm):
-    play = SubmitField('Play')
-    play_again = SubmitField('Play Again')
-    quit = SubmitField('Quit')
+class GameForm(FlaskForm):
+    username = StringField('')
+    hand_name = StringField('')
+    status = StringField('')
+ 
+# from flask_table import Table, Col
+
+
+# class GameTable(Table):
+#     username = Col('Username')
+#     hand_name = Col('Handname')
+#     status = Col('Winner')
