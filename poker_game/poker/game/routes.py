@@ -18,6 +18,7 @@ cards = Card.create_standard_52_cards()
 deck.add_cards(cards)
 
 @games.route("/game")
+@login_required
 def start_game():
     """
     Load start game page

@@ -10,11 +10,11 @@
     {% endif %}
 <div class="row">
     <p class="col-sm-6">
-        <a class="nav-item nav-link btn btn-success btn-sm " type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play Again</a>
+        <a class="game_links nav-item nav-link btn btn-success btn-sm " type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play Again</a>
     </p>
 
     <p class="col-sm-6">
-        <a class="nav-item nav-link btn btn-warning btn-sm" type="button" href="{{ url_for('games.quit') }}">Quit</a>
+        <a class="nav-item nav-link btn btn-warning btn-sm game_links" type="button" href="{{ url_for('games.quit') }}">Quit</a>
     </p>
 </div>
 <div class="container">          
@@ -25,7 +25,7 @@
                     <th>Player</th>
                     <th>Cards Received</th>
                     <th>Best Hand</th>
-                    <th>Hand Name</th>
+                    <th>Hand Rank</th>
                 </tr>
             </thead>
             <tbody>

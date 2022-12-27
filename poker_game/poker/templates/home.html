@@ -103,10 +103,11 @@
     </button>
   </div>
 </div>
-<!-- post comments -->
-<div class="col">
+<!-- end slideshow -->
+<div class="content-section">
   <div class="row">
-    <div class="col-6 btn-success">
+    <!-- game history -->
+    <div class="col-6 btn-success content-section">
       <h4>Game History</h4>
       {% for game in pokers.items %}
           <article class="media content-section">
@@ -133,7 +134,8 @@
         {% endif %}
       {% endfor %}
     </div>
-    <div class="col-6 btn-info">
+    <div class="col-6 btn-info content-section">
+      <!-- post comments -->
       <h4>Comments</h4>
       {% for post in posts.items %}
           <article class="media content-section">
@@ -160,7 +162,9 @@
         {% endif %}
       {% endfor %}
     </div>
-  </div>
   
+  </div>
+
+
 </div>
 {% endblock content %}

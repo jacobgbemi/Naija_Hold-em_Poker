@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
     <div>
-        <p><a class="nav-item nav-link btn btn-success btn-sm btn-block" type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play</a></p>
+        <p><a class="btn btn-success btn-sm btn-block game_links" type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play</a></p>
     </div>
    
     <div class="centralize">
@@ -19,7 +19,7 @@
             {% endfor %}
     </div>
     <div>
-        <p><a class="nav-item nav-link btn btn-success btn-sm btn-block" type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play</a></p>
+        <p><a class="nav-item nav-link btn btn-success btn-sm btn-block game_links" type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play</a></p>
     </div>
 
 
