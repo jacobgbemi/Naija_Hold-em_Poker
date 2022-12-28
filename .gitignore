@@ -1,4 +1,5 @@
 __pycache__
+__pycache__/
 poker_game/poker/__pycache__
 poker_game/poker/game/__pycache__
 poker_game/poker/main/__pycache__
