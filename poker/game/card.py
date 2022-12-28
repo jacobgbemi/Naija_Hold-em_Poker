@@ -1,4 +1,10 @@
+"""
+The Poker Cards
+"""
 class Card():
+    """
+    Card Object
+    """
     SUITS = ("Hearts", "Clubs", "Spades", "Diamonds")
 
     RANKS = (
@@ -8,6 +14,9 @@ class Card():
 
     @classmethod
     def create_standard_52_cards(cls):
+        """
+        Create list of 52 cards
+        """
         return [
             cls(rank = rank, suit = suit)
             for suit in cls.SUITS
@@ -15,6 +24,9 @@ class Card():
         ]
 
     def __init__(self, rank, suit):
+        """
+        Card Instantiation
+        """
         if rank not in self.RANKS:
             raise ValueError(f"Invalid rank. Rank must be one of the following: {self.RANKS}")
 
@@ -26,15 +38,27 @@ class Card():
         self.suit = suit
 
     def __str__(self):
+        """
+        Set card string output
+        """
         return f"{self.rank}_of_{self.suit}.png"
 
     def __repr__(self):
+        """
+        Set card computer representation output
+        """
         return f"Card('{self.rank}', '{self.suit}')"
 
     def __eq__(self, other):
+        """
+        Set when two cards are equal
+        """
         return self.rank == other.rank and self.suit == other.suit
 
     def __lt__(self, other):
+        """
+        Set when one card less than another
+        """
         if self.rank == other.rank:
             return self.suit < other.suit
         return self.rank_index < other.rank_index

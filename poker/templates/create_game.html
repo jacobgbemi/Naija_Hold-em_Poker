@@ -1,12 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
-    {% set winner = players|max %}
-    {% if winner.name == "Bot" %}
-        {% set status = "Lost" %}
-        <p class="alert alert-info alert-dismissable close" data-dismiss="alert">Bot won</p>
+    {% if players[0].best_hand()[0] ==  players[1].best_hand()[0] and players[0].best_hand()[2] ==  players[1].best_hand()[2]%}
+        {% set status = "Draw" %}
+        <p class="alert alert-info alert-dismissable close" data-dismiss="alert">It's Draw</p>
     {% else %}
-        {% set status = "Won" %}
-        <p class="alert alert-info alert-dismissable close" data-dismiss="alert">You won</p>
+        {% set winner = players|max %}
+        {% if winner.name == "Bot" %}
+            {% set status = "Lost" %}
+            <p class="alert alert-info alert-dismissable close" data-dismiss="alert">Bot won</p>
+        {% else %}
+            {% set status = "Won" %}
+            <p class="alert alert-info alert-dismissable close" data-dismiss="alert">You won</p>
+        {% endif %}
     {% endif %}
 <div class="row">
     <p class="col-sm-6">

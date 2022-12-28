@@ -13,16 +13,15 @@ from flask import render_template, Blueprint, flash, url_for, redirect, request
 
 games = Blueprint('games', __name__)
 
-deck = Deck()
-cards = Card.create_standard_52_cards()
-deck.add_cards(cards)
-
 @games.route("/game")
 @login_required
 def start_game():
     """
     Load start game page
     """
+    deck = Deck()
+    cards = Card.create_standard_52_cards()
+    deck.add_cards(cards)
     card = [str(card) for card in cards]
     card_string = "and".join(card)
     cards_list = str(card_string).split("and")
@@ -39,7 +38,6 @@ def show_cards(username):
     deck = Deck()
     cards = Card.create_standard_52_cards()
     deck.add_cards(cards)
-
     hand1 = Hand()
     hand2 = Hand()
     current_user.username = username

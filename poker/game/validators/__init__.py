@@ -1,3 +1,6 @@
+"""
+    Package for Validator
+"""
 from .rank_validator import RankValidator
 from .five_card_ranks_in_a_row_validator import FiveCardRanksInARowValidator
 

@@ -18,14 +18,19 @@
     font-size: 0.8rem;
   }
 
-  .how_to_play p {
+  .how_to_play p{
     background-color: #07b641;
     color: white;
     height: 10rem;
     text-align: center;
     border-radius: 0.5rem;
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
     vertical-align: center;
+    font-size: 1.3rem;
+  }
+
+  .how_to_play h5, p span{
+    color: blue;
   }
 
   .team div{

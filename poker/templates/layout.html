@@ -24,7 +24,7 @@
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
           <a class="navbar-brand mr-4" href="/">
-            <img src="{{ url_for('static', filename='images/front_page/poker.png')  }}", width='30', height='30' alt="icon" />
+            <img src="{{ url_for('static', filename='images/front_page/poker.png')  }}", width='50', height='30' alt="icon" />
             Poker
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,7 +109,7 @@
           </div>
         </div>
         <div class="content-section">
-          <h3>Poker hands ranking</h3>
+          <h4>Poker hands ranking</h4>
           <!-- Carousel -->
         <div id="handrank" class="carousel slide" data-bs-ride="carousel">
       
@@ -129,45 +129,95 @@
       
           <!-- The slideshow/carousel -->
           <div class="carousel-inner ">
-            <div class="carousel-item active ">
-              <img src="{{ url_for('static', filename='images/front_page/h1.png') }}", width='50', height='100' alt="#"  class="d-block w-100">
+            <div class="carousel-item active how_to_play">
+              <div class="d-block w-100">
+                <h5>1. High Card</h5>
+                <p > 
+                  A <span>High Card</span> refers to a hand with no matching cards.
+                </p>
+              </div>
             </div>
-            <div class="carousel-item ">
-              <img src="{{ url_for('static', filename='images/front_page/h2.png') }}", width='50', height='100' alt="#" class="d-block w-100">
+            <div class="carousel-item how_to_play">
+              <div class="d-block w-100">
+                <h5>2. Pair</h5>
+                <p > 
+                  A <span>Pair</span> is a pairing of the same card.
+                </p>
+              </div>
             </div>
-            <div class="carousel-item ">
-              <img src="{{ url_for('static', filename='images/front_page/h3.png') }}", width='50', height='100' alt="#" class="d-block w-100">
+            <div class="carousel-item how_to_play">
+              <div class="d-block w-100">
+                <h5>3. Two Pair</h5>
+                <p > 
+                  <span>Two Pair</span> is two different pairings or sets of the same card in one hand.
+                </p>
+              </div>
             </div>
-            <div class="carousel-item ">
-              <img src="{{ url_for('static', filename='images/front_page/h4.png') }}", width='50', height='100' alt="#" class="d-block w-100">
+            <div class="carousel-item how_to_play">
+              <div class="d-block w-100">
+                <h5>4. Three of A Kind</h5>
+                <p > 
+                  <span>Three of a Kind</span> is three of one card and two non-paired cards.
+                </p>
+              </div>
             </div>
-            <div class="carousel-item ">
-              <img src="{{ url_for('static', filename='images/front_page/h5.png') }}", width='50', height='100' alt="#" class="d-block w-100">
+            <div class="carousel-item how_to_play">
+              <div class="d-block w-100">
+                <h5>5. Straight</h5>
+                <p > 
+                  A <span>Straight</span> is five cards in numerical order, but not in the same suit.
+                </p>
+              </div>
             </div>
-            <div class="carousel-item ">
-              <img src="{{ url_for('static', filename='images/front_page/h6.png') }}", width='50', height='100' alt="#" class="d-block w-100">
+            <div class="carousel-item how_to_play">
+              <div class="d-block w-100">
+                <h5>6. Flush</h5>
+                <p > 
+                  A <span>Flush</span> is five cards in the same suit, not in numerical order.
+                </p>
+              </div>
             </div>
-            <div class="carousel-item ">
-              <img src="{{ url_for('static', filename='images/front_page/h7.png') }}", width='50', height='100' alt="#" class="d-block w-100">
+            <div class="carousel-item how_to_play">
+              <div class="d-block w-100">
+                <h5>7. Full House</h5>
+                <p > 
+                  A <span>Full House</span> is a Pair plus Three of A Kind in the same hand.
+                </p>
+              </div>
             </div>
-            <div class="carousel-item ">
-              <img src="{{ url_for('static', filename='images/front_page/h8.png') }}", width='50', height='100' alt="#" class="d-block w-100">
+            <div class="carousel-item how_to_play">
+              <div class="d-block w-100">
+                <h5>8. Four of A Kind</h5>
+                <p > 
+                  A <span>Four of a Kind</span> is the same card (same rank) in each of the four suits.
+                </p>
+              </div>
             </div>
-            <div class="carousel-item ">
-              <img src="{{ url_for('static', filename='images/front_page/h9.png') }}", width='50', height='100' alt="#" class="d-block w-100">
+            <div class="carousel-item how_to_play">
+              <div class="d-block w-100">
+                <h5>9. Straight Flush</h5>
+                <p > 
+                  A <span>Straight Flush</span> is five cards in a row, all in the same suit.
+                </p>
+              </div>
             </div>
-            <div class="carousel-item ">
-              <img src="{{ url_for('static', filename='images/front_page/h10.png') }}", width='50', height='100' alt="#" class="d-block w-100">
+            <div class="carousel-item how_to_play">
+              <div class="d-block w-100">
+                <h5>10. Royal Flush</h5>
+                <p > 
+                  A <span>Royal Flush</span> is made out of 10, Jack, Queen, King, Ace, all of the same suit.
+                </p>
+              </div>
             </div>
-                       
+                                  
           </div>
       
           <!-- Left and right controls/icons -->
           <button class="carousel-control-prev " type="button" data-bs-target="#handrank" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon btn btn-primary"></span>
+            <span class="carousel-control-prev-icon btn btn-info"></span>
           </button>
           <button class="carousel-control-next " type="button" data-bs-target="#handrank" data-bs-slide="next">
-            <span class="carousel-control-next-icon btn btn-primary"></span>
+            <span class="carousel-control-next-icon btn btn-info"></span>
           </button>
         </div>
       </div>
