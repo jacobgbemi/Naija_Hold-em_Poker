@@ -50,7 +50,7 @@
                 <td>
                     {% for card in hand_cards|best_hand_cards %}
                         <!-- {% set card_image = card.rank ~ '_of_' ~ card.suit ~ '.png' %} -->
-                        <img src="{{ url_for('static', filename='images/cards/' + card) }}", width='50', height='80' alt="{{ card_image }}"/>                        
+                        <img src="{{ url_for('static', filename='images/cards/' + card) }}", width='50', height='80' alt="{{ card }}"/>                        
                     {% endfor %}
                 </td>
                 <td>
