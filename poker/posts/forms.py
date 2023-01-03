@@ -5,5 +5,5 @@ from wtforms.validators import DataRequired
 
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
-    content = TextAreaField('Do you believe in luck? Yes or No', validators=[DataRequired()])
+    content = TextAreaField('Let\'s know if you had fun', validators=[DataRequired()])
     submit = SubmitField('Post Comment')

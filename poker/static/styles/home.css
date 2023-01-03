@@ -21,12 +21,12 @@
   .how_to_play p{
     background-color: #07b641;
     color: white;
-    height: 10rem;
+    height: 13rem;
     text-align: center;
     border-radius: 0.5rem;
     padding: 1rem 1rem;
     vertical-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .how_to_play h5, p span{
@@ -40,4 +40,9 @@
   .team_top {
     padding-top: 3.5rem;
     padding-bottom: 2.5rem;
+  }
+
+  .game_table {
+    border: 1rem green solid;
+    text-align: center;
   }

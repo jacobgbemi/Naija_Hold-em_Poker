@@ -22,9 +22,9 @@ class Player():
         current_player_cards = self.best_hand()[2]
         other_player_cards = other.best_hand()[2]
 
-        if current_player_best_validator_index == other_player_best_validator_index:
-            if other_player_cards < current_player_cards:
-                return current_player_best_validator_index
+        if current_player_best_validator_index == other_player_best_validator_index and\
+                other_player_cards < current_player_cards:
+            return current_player_best_validator_index
 
         if current_player_best_validator_index < other_player_best_validator_index:
             return current_player_best_validator_index

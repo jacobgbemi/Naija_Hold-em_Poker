@@ -1,59 +1,58 @@
 {% extends "layout.html" %}
 {% block content %}
     {% if players[0].best_hand()[0] ==  players[1].best_hand()[0] and players[0].best_hand()[2] ==  players[1].best_hand()[2]%}
-        {% set status = "Draw" %}
+        {% set result = "Draw" %}
         <p class="alert alert-info alert-dismissable close" data-dismiss="alert">It's Draw</p>
     {% else %}
         {% set winner = players|max %}
         {% if winner.name == "Bot" %}
-            {% set status = "Lost" %}
+            {% set result = "Lost" %}
             <p class="alert alert-info alert-dismissable close" data-dismiss="alert">Bot won</p>
         {% else %}
-            {% set status = "Won" %}
+            {% set result = "Won" %}
             <p class="alert alert-info alert-dismissable close" data-dismiss="alert">You won</p>
         {% endif %}
     {% endif %}
 <div class="row">
     <p class="col-sm-6">
-        <a class="game_links nav-item nav-link btn btn-success btn-sm " type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play Again</a>
+        <a onclick=addToDb() class="send__data__btn game_links nav-item nav-link btn btn-success btn-sm " type="button" href="{{ url_for('games.show_cards', username=current_user.username) }}">Play Again</a>
     </p>
 
     <p class="col-sm-6">
-        <a class="nav-item nav-link btn btn-warning btn-sm game_links" type="button" href="{{ url_for('games.quit') }}">Quit</a>
+        <a class=" nav-item nav-link btn btn-warning btn-sm game_links" type="button" href="{{ url_for('games.quit') }}">Quit</a>
     </p>
 </div>
 <div class="container">          
-    <table class="table">
+    <table >
         {% for player in players %}
             <thead>
-                <tr>
-                    <th>Player</th>
-                    <th>Cards Received</th>
-                    <th>Best Hand</th>
-                    <th>Hand Rank</th>
+                <tr >
+                    <th class="game_table">Player</th>
+                    <th class="game_table">Pre-flop, Flop, Turn and River</th>
+                    <th class="game_table">Best Hand</th>
+                    <th class="game_table">Hand Rank</th>
                 </tr>
             </thead>
-            <tbody>
-            <tr>
-                
-                <td class="btn btn-info btn-sm">
+            <tbody >
+            <tr >
+                <td class="btn btn-info btn-sm game_table">
                     {{ player.name }}
                 </td>
-                <td>
+                <td class="game_table">
                     {% set player_hand = player.hand|hand_list %}
                     {% for cardl_image in player_hand %}
                     <!-- <p>{{ cardl_image }}</p> -->
                     <img src="{{ url_for('static', filename='images/cards/' + cardl_image) }}", width='50', height='80' alt="{{ cardl_image }}"/>
                     {% endfor %}
-                </td>
+                </td class="game_table">
                 {% set index, hand_name, hand_cards  = player.best_hand() %}
-                <td>
+                <td class="game_table">
                     {% for card in hand_cards|best_hand_cards %}
                         <!-- {% set card_image = card.rank ~ '_of_' ~ card.suit ~ '.png' %} -->
                         <img src="{{ url_for('static', filename='images/cards/' + card) }}", width='50', height='80' alt="{{ card }}"/>                        
                     {% endfor %}
                 </td>
-                <td>
+                <td class="game_table">
                     <span class="btn btn-primary btn-sm">{{ hand_name }} </span>
                 </td>
                
@@ -65,18 +64,15 @@
 </div>
 
 
-<!-- <script src="{{ url_for('static', filename='scripts/index.js') }}"></script> -->
-<!-- <div class="content-section ">
-{% raw %}
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
+<div class="content-section ">
+    <form hidden id="myForm">
         <fieldset class="form-group">
-            <div class="form-group"  >
-                {{ form.hand_name.label(class="form-control-label" type="hidden" name="secret_value") }}
+            <div class="form-group">
+                {{ form.hand_name.label(class="form-control-label", id="hand_name", name="hand_name") }}
                 {% if form.hand_name.errors %}
                     {{ form.hand_name(class="form-control form-control-lg is-invalid") }}
                     <div class="invalid-feedback">
-                        {% for error in form.title.errors %}
+                        {% for error in form.hand_name.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
@@ -84,8 +80,8 @@
                     {{ form.hand_name(class="form-control form-control-lg") }}
                 {% endif %}
             </div>
-            <div class="form-group" type="hidden" name="secret_value" >
-                {{ form.status.label(class="form-control-label") }}
+            <div class="form-group">
+                {{ form.status.label(class="form-control-label", id="status", name="status") }}
                 {% if form.status.errors %}
                     {{ form.status(class="form-control form-control-lg is-invalid") }}
                     <div class="invalid-feedback">
@@ -98,7 +94,10 @@
                 {% endif %}
             </div>
         </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
     </form>
-{% endraw %}
-</div> -->
+</div>
+<script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
 {% endblock content %}

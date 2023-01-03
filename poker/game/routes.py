@@ -9,7 +9,7 @@ from flask_login import current_user, login_required
 from poker import db
 from poker.models import Game
 from poker.game.forms import GameForm
-from flask import render_template, Blueprint, flash, url_for, redirect, request
+from flask import render_template, Blueprint, flash, url_for, redirect, abort, request
 
 games = Blueprint('games', __name__)
 
@@ -47,13 +47,25 @@ def show_cards(username):
     game_round = GameRound(deck = deck, players = players)
     game_round.play()
 
+    form = GameForm()
+    # if form.validate_on_submit():
+    #     game = Game(title=form.hand_name.data, content=form.status.data, author=current_user)
+        # data_saved = request.form
+        # for key, value in data_saved.items():
+        #     hand_name = value[0]
+        #     status = value[1]
+        #     game = Game(hand_name=hand_name, status=status, author=current_user)
+    # db.session.add(game)
+    # db.session.commit()
+    # game = Game.query.get_or_404(username)
+    # if game.author != current_user:
+    #     abort(403)
     # form = GameForm()
     # if form.validate_on_submit():
-    #     game = Game(hand_name=form.hand_name.data, status=form.status.data, author=current_user)
-    #     db.session.add(game)
+    #     game.hand_name = form.title.data
+    #     game.status = form.content.data
     #     db.session.commit()
-    #     return redirect(url_for('main.home'))
-    return render_template("create_game.html", players=players)
+    return render_template("create_game.html", form=form, players=players)
 
 def split_list(a_list):
     """
@@ -96,23 +108,32 @@ def best_hand_cards(hand_cards):
     return str(hand_cards_string).split("and")
 games.add_app_template_filter(best_hand_cards, name=None)
 
-# @games.route("/game/<string:username>", methods=[ 'POST'])
-# def add_hand_name_to_db(hand_name, status):
+# @games.route("/game/save", methods=['POST'])
+# @login_required
+# def add_game_to_db():
 #     """
 #     Jinja2 Custom filter to add hand_name to db
 #     """
 #     form = GameForm()
 #     if form.validate_on_submit():
-#         # game = Game(hand_name=form.hand_name.data, author=current_user)
-#         if hand_name:
-#             current_user.hand_name = hand_name
-#             hand_name = form.hand_name.data
-#         else:
-#             current_user.status = status
-#             status = form.status.data
-#     db.session.add(hand_name)
-#     db.session.add(status)
+#         data_saved = request.form
+#         for key, value in data_saved.items():
+#             hand_name = value[0]
+#             status = value[1]
+#             game = Game(hand_name=hand_name, status=status, author=current_user)
+#     db.session.add(game)
 #     db.session.commit()
+#     return 0
+#     return render_template("create_game.html", form=form)
+    # if form.validate_on_submit():
+    #     game = Game(hand_name=form.hand_name.data, status=form.status.data, author=current_user)
+    #     data_saved = request.get_json()
+    #     for key, value in data_saved.items():
+    #         game.hand_name = value[0]
+    #         game.status = value[1]
+    # db.session.add(game)
+    # db.session.commit()
+    # return render_template('create_game.html')
 #     # flash('Your game Status added to history', 'success')
 # games.add_app_template_filter(add_hand_name_to_db, name=None)
 
