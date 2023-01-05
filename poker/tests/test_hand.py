@@ -4,11 +4,14 @@ from poker.game.hand import Hand
 from poker.game.validators import PairValidator
 
 class HandTest(unittest.TestCase):
+    """Unittest for Hand """
     def test_starts_out_with_no_cards(self):
+        """check hand has not card at the start"""
         hand = Hand()
         self.assertEqual(hand.cards, [])
 
     def test_shows_all_its_cards_in_technical_representation(self):
+        """check hand shows all cards in technical repr """
         cards = [
             Card(rank = "Ace", suit = "Diamonds"),
             Card(rank = "7", suit = "Clubs")
@@ -23,6 +26,7 @@ class HandTest(unittest.TestCase):
         )
 
     def test_receives_and_stores_cards(self):
+        """check hand can receive and store cards"""
         ace_of_spades = Card(rank = "Ace", suit = "Spades")
         six_of_clubs = Card(rank = "6", suit = "Clubs")
 
@@ -43,7 +47,9 @@ class HandTest(unittest.TestCase):
         )
 
     def test_interacts_with_validator_to_get_winning_hand(self):
+        """check hand interacts with validator to get winning hand """
         class HandWithOneValidator(Hand):
+            """create a tuple of PairValidator for testing"""
             VALIDATORS = (PairValidator,)
 
         ace_of_hearts = Card(rank = "Ace", suit = "Hearts")

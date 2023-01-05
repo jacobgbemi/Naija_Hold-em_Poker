@@ -11,6 +11,7 @@ users = Blueprint('users', __name__)
 
 @users.route("/register", methods=['GET', 'POST'])
 def register():
+    """A page for player to register"""
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
     form = RegistrationForm()
@@ -26,6 +27,7 @@ def register():
 
 @users.route("/login", methods=['GET', 'POST'])
 def login():
+    """A page for player to login"""
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
     form = LoginForm()
@@ -42,6 +44,7 @@ def login():
 
 @users.route("/logout")
 def logout():
+    """A player to logout"""
     logout_user()
     return redirect(url_for('main.home'))
 
@@ -49,6 +52,7 @@ def logout():
 @users.route("/account", methods=['GET', 'POST'])
 @login_required
 def account():
+    """A page for player profile"""
     form = UpdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
@@ -69,6 +73,7 @@ def account():
 
 @users.route("/user/<string:username>")
 def user_posts(username):
+    """A page for player's post"""
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first_or_404()
     posts = Post.query.filter_by(author=user)\
@@ -78,6 +83,7 @@ def user_posts(username):
 
 @users.route("/player/<string:username>")
 def player_games(username):
+    """A page for player's game history"""
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first_or_404()
     pokers = Game.query.filter_by(author=user)\
@@ -88,6 +94,7 @@ def player_games(username):
 
 @users.route("/reset_password", methods=['GET', 'POST'])
 def reset_request():
+    """Sending a password reset request"""
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
     form = RequestResetForm()
@@ -101,6 +108,7 @@ def reset_request():
 
 @users.route("/reset_password/<token>", methods=['GET', 'POST'])
 def reset_token(token):
+    """Setting the reset token"""
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
     user = User.verify_reset_token(token)

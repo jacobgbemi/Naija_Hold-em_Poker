@@ -4,7 +4,9 @@ from poker.game.card import Card
 from poker.game.validators import RoyalFlushValidator
 
 class RoyalFlushValidatorTest(unittest.TestCase):
+    """Unittest for Royal Flush Validator"""
     def test_validates_that_cards_do_not_have_straight_flush_ending_in_ace(self):
+        """check a list of consecutive cards ending in Ace is not a straight flush"""
         cards = [
             Card(rank = "9", suit = "Clubs"),
             Card(rank = "10", suit = "Clubs"),
@@ -22,6 +24,9 @@ class RoyalFlushValidatorTest(unittest.TestCase):
         )
 
     def test_validates_that_cards_do_not_have_straight_flush_ending_in_ace(self):
+        """check a list of consecutive cards ending in more than one Aces 
+            is not a straight flush
+        """
         cards = [
             Card(rank = "2", suit = "Spades"),
             Card(rank = "10", suit = "Clubs"),
@@ -40,6 +45,7 @@ class RoyalFlushValidatorTest(unittest.TestCase):
         )
 
     def test_returns_five_straight_cards_with_same_rank_ending_in_ace(self):
+        """check a list of 5 consecutive cards ending in Ace"""
         ten   = Card(rank = "10", suit = "Clubs")
         jack  = Card(rank = "Jack", suit = "Clubs")
         queen = Card(rank = "Queen", suit = "Clubs")

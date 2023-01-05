@@ -12,6 +12,9 @@ posts = Blueprint('posts', __name__)
 @posts.route("/post/new", methods=['GET', 'POST'])
 @login_required
 def new_post():
+    """
+    A page for creating player's comment
+    """
     form = PostForm()
     if form.validate_on_submit():
         post = Post(title=form.title.data, content=form.content.data, author=current_user)
@@ -24,10 +27,16 @@ def new_post():
 
 @posts.route("/post/latest")
 def latest_post():
+    """
+    Accessing the latest comment
+    """
     return redirect(url_for('main.home'))
     
 @posts.route("/post/<int:post_id>")
 def post(post_id):
+    """
+    A page to display a player's comment 
+    """
     post = Post.query.get_or_404(post_id)
     return render_template('post.html', title=post.title, post=post)
 
@@ -35,6 +44,9 @@ def post(post_id):
 @posts.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):
+    """
+    A player's can update their comments
+    """
     post = Post.query.get_or_404(post_id)
     if post.author != current_user:
         abort(403)
@@ -55,6 +67,9 @@ def update_post(post_id):
 @posts.route("/post/<int:post_id>/delete", methods=['POST'])
 @login_required
 def delete_post(post_id):
+    """
+    A player can delete their comments
+    """
     post = Post.query.get_or_404(post_id)
     if post.author != current_user:
         abort(403)

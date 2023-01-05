@@ -4,7 +4,9 @@ from poker.game.card import Card
 from poker.game.validators import FlushValidator
 
 class FlushValidatorTest(unittest.TestCase):
+    """Unittest for Flush Validator"""
     def setUp(self):
+        """set attributes at start of test """
         self.two_of_hearts   = Card(rank = "2", suit = "Hearts")
         self.five_of_hearts  = Card(rank = "5", suit = "Hearts")
         self.seven_of_hearts = Card(rank = "7", suit = "Hearts")
@@ -23,6 +25,7 @@ class FlushValidatorTest(unittest.TestCase):
         ]
 
     def test_validates_that_five_cards_of_same_suit_exist_in_collection(self):
+        """check 5 cards of the same suit exist"""
         validator = FlushValidator(cards = self.cards)
 
         self.assertEqual(
@@ -31,6 +34,7 @@ class FlushValidatorTest(unittest.TestCase):
         )
 
     def test_returns_the_five_highest_cards_with_the_same_suit(self):
+        """check list of 5 highest cards with the same suit """
         validator = FlushValidator(cards = self.cards)
 
         self.assertEqual(

@@ -7,10 +7,12 @@ from flask_login import UserMixin
 
 @login_manager.user_loader
 def load_user(user_id):
+    """Get player id after logging in"""
     return User.query.get(int(user_id))
 
 
 class User(db.Model, UserMixin):
+    """Set player data for storage"""
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -25,6 +27,7 @@ class User(db.Model, UserMixin):
 
     @staticmethod
     def verify_reset_token(token):
+        """After password reset, verify reset token"""
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
             user_id = s.loads(token)['user_id']
@@ -37,6 +40,7 @@ class User(db.Model, UserMixin):
 
 
 class Post(db.Model):
+    """Set comments/posts data for storage"""
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -48,6 +52,7 @@ class Post(db.Model):
         return f"Post('{self.title}', '{self.date_posted}')"
 
 class Game(db.Model):
+    """Set game results data for storage"""
     id = db.Column(db.Integer, primary_key=True)
     # username = db.Column(db.String(20), unique=True, nullable=False)
     status = db.Column(db.String(20), nullable=True)

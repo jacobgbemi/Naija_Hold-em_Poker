@@ -5,7 +5,9 @@ from poker.game.card import Card
 from poker.game.game_round import GameRound
 
 class GameRoundTest(unittest.TestCase):
+    """Unittest for GameRound"""
     def setUp(self):
+        """Available attributes at start up"""
         self.first_two_cards = [
             Card(rank = "2", suit = "Hearts"),
             Card(rank = "6", suit = "Clubs")
@@ -27,6 +29,7 @@ class GameRoundTest(unittest.TestCase):
         self.river_card = [Card(rank = "Queen", suit = "Clubs")]
 
     def test_stores_deck_and_players(self):
+        """check players and deck are stored """
         deck = MagicMock()
 
         players = [
@@ -50,6 +53,7 @@ class GameRoundTest(unittest.TestCase):
         )
 
     def test_game_play_shuffles_deck(self):
+        """check deck is shuffle before game play"""
         mock_deck = MagicMock()
 
         players = [
@@ -67,6 +71,7 @@ class GameRoundTest(unittest.TestCase):
         mock_deck.shuffle.assert_called_once()
 
     def test_deals_two_initial_cards_from_deck_to_each_player(self):
+        """check deals two different cards during pre-flop"""
         mock_deck = MagicMock()
         mock_deck.remove_cards.side_effect = [
             self.first_two_cards, 
@@ -100,6 +105,7 @@ class GameRoundTest(unittest.TestCase):
         ])
 
     def test_removes_player_if_not_willing_to_make_bet(self):
+        """check removes player if not willing to make bet"""
         deck = MagicMock()
         player1 = MagicMock()
         player2 = MagicMock()
@@ -117,6 +123,9 @@ class GameRoundTest(unittest.TestCase):
         )
 
     def test_deals_each_player_3_flop_1_turn_and_1_river_cards(self):
+        """check deals each player 3 cards at flop, 1 card at turn
+            and 1 card at river
+        """
         mock_player1 = MagicMock()
         mock_player1.wants_to_fold.return_value = False
         mock_player2 = MagicMock()

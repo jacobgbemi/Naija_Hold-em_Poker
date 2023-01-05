@@ -4,7 +4,9 @@ from poker.game.card import Card
 from poker.game.validators import PairValidator
 
 class PairValidatorTest(unittest.TestCase):
+    """Unittest for Pair Validator"""
     def test_validates_that_cards_have_exactly_one_pair(self):
+        """check one pair is the list of cards"""
         cards = [
             Card(rank = "Ace", suit = "Spades"),
             Card(rank = "Ace", suit = "Clubs")
@@ -18,6 +20,7 @@ class PairValidatorTest(unittest.TestCase):
         )
 
     def test_returns_pair_from_card_collection(self):
+        """check it's a list of a pair"""
         ten_of_spades = Card(rank = "10", suit = "Spades")
         ten_of_clubs = Card(rank = "10", suit = "Clubs")
 

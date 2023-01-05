@@ -4,7 +4,9 @@ from poker.game.card import Card
 from poker.game.validators import HighCardValidator
 
 class HighCardValidatorTest(unittest.TestCase):
+    """Unittest for High Card Validator"""
     def test_validates_that_cards_have_a_high_card(self):
+        """check cards has high card"""
         cards = [
             Card(rank = "7", suit = "Clubs"),
             Card(rank = "Ace", suit = "Diamonds")
@@ -18,6 +20,7 @@ class HighCardValidatorTest(unittest.TestCase):
         )
 
     def test_returns_high_card_from_card_collection(self):
+        """check high card is the list of cards"""
         ace_of_diamonds = Card(rank = "Ace", suit = "Diamonds")
 
         cards = [

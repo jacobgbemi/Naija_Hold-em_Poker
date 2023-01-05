@@ -7,6 +7,7 @@ from poker import mail
 
 
 def save_picture(form_picture):
+    """Get player profile picture and convert to thumbnail"""
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
@@ -20,6 +21,7 @@ def save_picture(form_picture):
     return picture_fn
 
 def send_reset_email(user):
+    """Sending the reset email to player to in order to reset password"""
     token = user.get_reset_token()
     msg = Message(subject='Password Reset Request',
                   sender=current_app.config.get("MAIL_USERNAME"),
