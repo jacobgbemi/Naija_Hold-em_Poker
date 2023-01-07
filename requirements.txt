@@ -59,6 +59,8 @@ lazr.restfulclient==0.14.2
 lazr.uri==1.0.3
 lib==4.0.0
 lxml==4.5.0
+Mako==1.1.0
+Markdown==3.1.1
 MarkupSafe==2.1.1
 mccabe==0.6.1
 mistune==2.0.4
@@ -68,6 +70,7 @@ mysqlclient==2.1.1
 netifaces==0.10.4
 # numpy==1.23.1
 oauthlib==3.1.0
+packaging==20.3
 paramiko==2.11.0
 parsedatetime==2.4
 pathlib2==2.3.7.post1
@@ -81,6 +84,7 @@ pyasn1-modules==0.2.1
 pycodestyle==2.8.0
 pycparser==2.21
 pyflakes==2.1.1
+Pygments==2.3.1
 PyGObject==3.36.0
 PyHamcrest==1.9.0
 PyICU==2.4.2
@@ -110,7 +114,7 @@ soupsieve==1.9.5
 spark-parser==1.8.9
 SQLAlchemy==1.4.41
 ssh-import-id==5.10
-svgwrite==1.4.3
+# svgwrite==1.4.3
 # systemd-python==234
 # tk==0.1.0
 # Tree==0.2.4
