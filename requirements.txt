@@ -111,7 +111,7 @@ spark-parser==1.8.9
 SQLAlchemy==1.4.41
 ssh-import-id==5.10
 svgwrite==1.4.3
-systemd-python==234
+# systemd-python==234
 # tk==0.1.0
 # Tree==0.2.4
 # Twisted==18.9.0
