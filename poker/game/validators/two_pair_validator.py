@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Hand Rank Validator for Two Pair"""
 from poker.game.validators import RankValidator
 

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from poker import create_app
 
 app = create_app()

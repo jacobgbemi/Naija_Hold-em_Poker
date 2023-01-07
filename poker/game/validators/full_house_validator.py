@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Hand Rank Validator for Full House"""
 from poker.game.validators import ThreeOfAKindValidator, PairValidator
 

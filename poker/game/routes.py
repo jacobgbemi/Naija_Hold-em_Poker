@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Routes for player to play game"""
 from poker.game.card import Card
 from poker.game.deck import Deck

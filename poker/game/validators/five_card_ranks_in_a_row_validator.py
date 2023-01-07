@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ Class to handle collections of five cards with consecutive ranks"""
 
 

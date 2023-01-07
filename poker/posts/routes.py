@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from flask import (render_template, url_for, flash,
                    redirect, request, abort, Blueprint, current_app)
 from flask_login import current_user, login_required

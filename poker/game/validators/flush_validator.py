@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ Hand Rank Validator for Flush"""
 
 

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 The Game Flask Form
 """

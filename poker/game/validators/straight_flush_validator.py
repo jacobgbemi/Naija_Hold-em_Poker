@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Hand Rank Validator for Straiht Flush """
 from poker.game.validators import FiveCardRanksInARowValidator
 

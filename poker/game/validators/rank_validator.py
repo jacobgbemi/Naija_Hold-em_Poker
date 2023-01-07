@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Validator for counting ranks in a list of cards"""
 
 

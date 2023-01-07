@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from flask import render_template, request, Blueprint
 from poker.models import Post
 from poker.models import Game
