@@ -16,7 +16,10 @@ my_env/
 __pycache__/
 *.py[cod]
 *$py.class
-
+*pyc
+*.pyc
+*.cpython
+*.cpython
 # C extensions
 *.so
 
@@ -76,7 +79,7 @@ db.sqlite3
 db.sqlite3-journal
 
 # Flask stuff:
-instance/
+# instance/
 .webassets-cache
 
 # Scrapy stuff:
