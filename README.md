@@ -46,9 +46,9 @@ Create one to many relationship for players and comments
 - Players can see their game history (this feature is not working yet).
 ### Authors
 - Gbemi Jacob Adebayo [LinkedIn]() | [Twitter]() | [GitHub]()
-Gbemi, aka Jag is a process engineer, a project engineer and a software enthusiast.
+- Gbemi, aka Jag is a process engineer, a project engineer and a software enthusiast.
 - Oluwadamilare Adedokun [LinkedIn]() | [Twitter]() | [GitHub]()
-Oluwadamilare, aka Damadet ..............
+- Oluwadamilare, aka Damadet ..............
 
 ### Features to Further Explored
 - Adding the game history
