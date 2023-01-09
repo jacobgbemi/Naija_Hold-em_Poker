@@ -8,9 +8,9 @@ To achieve this, betting is not implemented, and there is only two players, the 
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Usage](#usage)
-- [The Approach](#TheApproach)
+- [The Approach](#The-Approach)
 - [Authors](#Authors)
-- [Features to Further Explored](#FeaturestoFurtherExplored)
+- [Features to Further Explored](#Features-to-Further-Explored)
 - [Acknolodgement](#Acknolodgement)
 - [References](#References)
 ## Introduction
@@ -31,8 +31,9 @@ Creates model system
 Create one to many relationship for players and comments
 ### Deployment
 - Deployed on pythonanywhere
-## The Approach
-
+## The-Approach
+- Test driven development (TDD) was implemented in building the game algorithms
+- Each player gets 52 cards
 ## Installation
 - To install the app, simply clone this repository. 
 - Make sure to install the requirements ```pip install -r requirement.txt```.
@@ -51,7 +52,7 @@ Create one to many relationship for players and comments
 - Oluwadamilare Adedokun [LinkedIn]() | [Twitter]() | [GitHub]()
 - Oluwadamilare, aka Damadet ..............
 
-### Features to Further Explored
+### Features-to-Further-Explored
 - Adding the game history
 - Adding multiple player at the same time
 - Adding betting
