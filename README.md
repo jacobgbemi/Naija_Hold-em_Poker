@@ -39,7 +39,7 @@ Create one to many relationship for players and comments
 - Make sure to install the requirements ```pip install -r requirement.txt```.
 - Run the app.py ```python3 app.py```
 ## Usage
-- To use this web application, kindly visit [Naija Hold-em Poker](jacobgbemi.pythonanywhere.com).
+- To use this web application, kindly visit [Naija Hold-em Poker](http://jacobgbemi.pythonanywhere.com/).
 - You will need to register and login before you can play the game
 - After login, click ```start game```
 - Then ```play```, and ```play again``` and again, until you ```quit```.
