@@ -4,8 +4,14 @@
 [Naija Hold-em Poker](http://jacobgbemi.pythonanywhere.com/) is a web application designed to simplify the game of poker for beginners. The game is designed for Africans who know little or nothing about this card game.
 To achieve this, betting is not implemented, and there is only two players, the Bot and the login player, while the rounds of pre-flop, flop, turn and river are merged into a single click of play button. Players can play as many times as they want, see their given cards and their best hands, including whether it is a win, lose or draw.
 ## Table of Content
-- 
--
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+- [The Approach](#The Approach)
+- [Authors](#Authors)
+- [Features to Further Explored](#Features to Further Explored)
+- [Acknolodgement](#Acknolodgement)
+- [References](#References)
 ## Introduction
 We planned to create a game web application but we are not sure where to start from. After much suggestions, poker game was chosen. This is because board games and some few card games are more popular in Africa than poker game.
 Although, there are about 13 different poker games, Texas Hold-em Poker is one of the most popular, and most players play this game with betting, where the winner takes all the bets.
