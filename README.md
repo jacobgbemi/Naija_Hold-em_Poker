@@ -61,6 +61,7 @@ Create one to many relationship for players and comments
 - And other all cohort 6 peers who had collaborated one way or the order.
 
 ### References
-- Poker page
-- Youtube
-- Other pages
+- https://www.cardschat.com/poker/strategy/poker-hands/ 
+- https://github.com/CoreyMSchafer/code_snippets/tree/master/Python/Flask_Blog
+- https://www.udemy.com/course/learn-to-code-with-python/learn/lecture/19583218?start=0
+- https://www.alxafrica.com
